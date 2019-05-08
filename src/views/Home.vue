@@ -5,21 +5,27 @@
         <el-aside>
           <div class="components-list">
             <div class="components-title">
-              <div class="text">
-                组件库
-              </div>
+              <div class="text">组件库</div>
             </div>
             <div class="component-item">
               <div class="component-item-title">商城组件</div>
               <draggable
                 element="ul"
                 :list="storeComponents"
-                :options="{group:{ name:'widget', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
+                :options="{
+                  group: { name: 'widget', pull: 'clone', put: false },
+                  sort: false,
+                  ghostClass: 'ghost'
+                }"
               >
-              <li class="component-item-li" v-for="(item, index) in storeComponents" :key="index">
-                <i class="iconfont" :class="item.icon"></i>
-                <p class="text">{{item.name}}</p>
-              </li>
+                <li
+                  class="component-item-li"
+                  v-for="(item, index) in storeComponents"
+                  :key="index"
+                >
+                  <i class="iconfont" :class="item.icon"></i>
+                  <p class="text">{{ item.name }}</p>
+                </li>
               </draggable>
             </div>
           </div>
@@ -30,9 +36,9 @@
             <el-button type="text" size="medium" icon="el-icon-refresh" @click="handleReset()" class="mg-r15">重置</el-button>
             <el-button type="text" size="medium" icon="el-icon-view" @click="handlePreview()" class="mg-r15">预览</el-button>
             <el-button type="text" size="medium" icon="el-icon-document" @click="handleSave()" class="mg-r15">保存</el-button>
-          </el-header> -->
+          </el-header>-->
           <el-main>
-            <!-- <widget-form></widget-form> -->
+            <Layout></Layout>
           </el-main>
         </el-container>
 
@@ -47,29 +53,36 @@
               <page-config v-show="configTab=='page'"></page-config>
             </el-main>
           </el-container>
-        </el-aside> -->
+        </el-aside>-->
       </div>
     </el-container>
   </div>
 </template>
 
 <script>
-import Draggable from 'vuedraggable'
-import allWidget from 'assets/json/widget.json'
+import Draggable from "vuedraggable";
+import Layout from "@/components/layout.vue";
+
+import allWidget from "assets/json/widget.json";
+
 export default {
-  name: 'home',
-  components: { Draggable },
+  name: "home",
+  components: { Draggable, Layout },
   data() {
     return {
       storeComponents: allWidget.storeComponents
-    }
+    };
   }
-}
+};
 </script>
 <style lang="stylus">
 .form-edit-wrapper {
   display: flex;
   width: 100%;
+}
+
+.center-container {
+  width: 414px!important;
 }
 
 .components-list {
@@ -132,4 +145,3 @@ export default {
   }
 }
 </style>
-

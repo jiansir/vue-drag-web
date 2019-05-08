@@ -1,6 +1,6 @@
 module.exports = {
-  presets: ["@vue/app"],
-  plugins: [
+  presets: [["@vue/app",{"useBuiltIns": "entry"}]],
+  "plugins": [
     [
       "component",
       {
@@ -9,4 +9,4 @@ module.exports = {
       }
     ]
   ]
-};
+}

@@ -1,88 +1,92 @@
 <template>
   <div class="home">
-    <el-container>
-      <div class="form-edit-wrapper">
-        <el-aside>
-          <div class="components-list">
-            <div class="components-title">
-              <div class="text">组件库</div>
-            </div>
-            <div class="component-item">
-              <div class="component-item-title">商城组件</div>
-              <draggable
-                element="ul"
-                :list="storeComponents"
-                :options="{
-                  group: { name: 'widget', pull: 'clone', put: false },
-                  sort: false,
-                  ghostClass: 'ghost'
-                }"
-              >
-                <li
-                  class="component-item-li"
-                  v-for="(item, index) in storeComponents"
-                  :key="index"
-                >
-                  <i class="iconfont" :class="item.icon"></i>
-                  <p class="text">{{ item.name }}</p>
-                </li>
-              </draggable>
-            </div>
+    <div class="form-edit-wrapper">
+      <el-aside>
+        <div class="components-list">
+          <div class="components-title">
+            <div class="text">组件库</div>
           </div>
-        </el-aside>
+          <div class="component-item">
+            <div class="component-item-title">商城组件</div>
+            <draggable
+              element="ul"
+              :list="storeComponents"
+              :options="{
+                group: { name: 'widget', pull: 'clone', put: false },
+                sort: false,
+                ghostClass: 'ghost'
+              }"
+            >
+              <li
+                class="component-item-li"
+                v-for="(item, index) in storeComponents"
+                :key="index"
+              >
+                <i class="iconfont" :class="item.icon"></i>
+                <p class="text">{{ item.name }}</p>
+              </li>
+            </draggable>
+          </div>
+        </div>
+      </el-aside>
 
-        <el-container class="center-container" direction="vertical">
-          <!-- <el-header class="btn-bar" style="height: 45px;">
-            <el-button type="text" size="medium" icon="el-icon-refresh" @click="handleReset()" class="mg-r15">重置</el-button>
-            <el-button type="text" size="medium" icon="el-icon-view" @click="handlePreview()" class="mg-r15">预览</el-button>
-            <el-button type="text" size="medium" icon="el-icon-document" @click="handleSave()" class="mg-r15">保存</el-button>
-          </el-header>-->
-          <el-main>
-            <Layout></Layout>
-          </el-main>
-        </el-container>
-
-        <!-- <el-aside class="widget-config-container" style="min-width:300px;width:20vw">
-          <el-container>
-            <el-header height="45px" class="flex">
-              <div class="config-tab flex-auto" :class="{active: configTab=='widget'}" @click="handleConfigSelect('widget')">字段属性</div>
-              <div class="config-tab flex-auto" :class="{active: configTab=='page'}" @click="handleConfigSelect('page')">页面属性</div>
-            </el-header>
-            <el-main class="config-content">
-              <widget-config v-show="configTab=='widget'"></widget-config>
-              <page-config v-show="configTab=='page'"></page-config>
-            </el-main>
-          </el-container>
-        </el-aside>-->
+      <div class="center-container">
+        <div>
+          <Layout></Layout>
+        </div>
       </div>
-    </el-container>
+
+      <div class="edit-body">
+        <div class="config-content">
+          <layout-config></layout-config>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import Draggable from "vuedraggable";
-import Layout from "@/components/layout.vue";
-
-import allWidget from "assets/json/widget.json";
-
+import Draggable from 'vuedraggable'
+import Layout from '@/components/layout.vue'
+import LayoutConfig from '@/components/layout-config.vue'
+import allWidget from 'assets/json/widget.json'
+import { mapState } from 'vuex'
 export default {
-  name: "home",
-  components: { Draggable, Layout },
+  name: 'home',
+  components: { Draggable, Layout, LayoutConfig },
   data() {
     return {
       storeComponents: allWidget.storeComponents
-    };
+    }
+  },
+  computed: {
+    ...mapState({
+      pageData: state => state.common.pageData
+    })
   }
-};
+}
 </script>
 <style lang="stylus">
 .form-edit-wrapper {
   display: flex;
   width: 100%;
+  justify-content: space-between;
+  padding: 0 40px;
+  align-items: flex-start;
+}
+
+.edit-body {
+  width: 400px;
+  height: auto;
+  min-height: 100px;
+  padding: 10px;
+  border: 1px solid #e9e9e9;
 }
 
 .center-container {
-  width: 414px!important;
+  width: 375px;
+  height: 700px;
+  border: 1px solid #e9e9e9;
 }
 
 .components-list {

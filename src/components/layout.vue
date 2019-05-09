@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="container">
-      <layout-list></layout-list>
+      <layout-list list="list"></layout-list>
     </div>
   </div>
 </template>
@@ -23,7 +23,6 @@ export default {
 </script>
 <style lang="stylus" scoped>
 .wrapper {
-  width: 414px;
-  border:1px solid $pri-color;
+  width: 100%;
 }
 </style>

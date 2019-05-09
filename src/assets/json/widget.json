@@ -4,19 +4,10 @@
       "type": "input",
       "name": "输入框",
       "placeholder": "请输入关键字搜索",
-      "showLabel": false,
-      "label": {
-        "labelTitle": "姓名",
-        "labelPosition": "left",
-        "labelwidth": 50,
-        "labelWidth": "50px"
-      },
       "value": "",
       "icon":"el-icon-search",
-      "apiKey": "name",
-      "fieldTypes": "inputTypes",
       "style": {
-        "margin": "0px 0px 0px 0px"
+        "borderRadius":"18px"
       }
     },
     {
@@ -25,23 +16,14 @@
       "value": [
         {
           "url": "https://www.baidu.com",
-          "image": "static/img/theme1.jpg"
+          "image": "https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/44235/12/3735/146697/5ccfc4e3E4916e35d/7b945cc5490d3891.jpg!cr_1125x549_0_72!q70.jpg"
         },
         {
           "url": "https://qq.com",
-          "image": "static/img/theme2.jpg"
-        },
-        {
-          "url": "https://jd.com",
-          "image": "static/img/theme3.jpg"
+          "image": "https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/44003/33/3768/100951/5ccfe367Eb996867c/9e5dc7d6d0055c27.jpg!cr_1125x549_0_72!q70.jpg"
         }
       ],
-      "interval": 3000,
-      "icon":"el-icon-picture",
-      "style": {
-        "margin": "0px 0px 0px 0px",
-        "height": 250
-      }
+      "icon":"el-icon-picture"
     }
   ]
 }
